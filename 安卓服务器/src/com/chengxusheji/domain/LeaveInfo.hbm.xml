@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="LeaveInfo" table="LeaveInfo">
+
+          <!-- 主键请假记录ID -->
+          <id name="leaveId" column="leaveId">
+            <generator class="native"/>
+          </id>
+
+          <!-- 简单字符串属性: 填表时间 -->
+          <property
+            name="writeTime"
+            column="writeTime"
+            type="string"
+            length="40"
+          />
+
+          <!-- 多对一属性: 部门 -->
+          <many-to-one name="departmentObj"
+            column="departmentObj"
+            class="Department"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 多对一属性: 请假人 -->
+          <many-to-one name="userObj"
+            column="userObj"
+            class="UserInfo"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 多对一属性: 职级 -->
+          <many-to-one name="positionObj"
+            column="positionObj"
+            class="Position"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 多对一属性: 请假类别 -->
+          <many-to-one name="leaveTypeObj"
+            column="leaveTypeObj"
+            class="LeaveType"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 是否长假 -->
+          <property
+            name="sfcj"
+            column="sfcj"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单日期型属性: 开始时间 -->
+          <property
+            name="startDate"
+            column="startDate"
+            	type="timestamp"
+            	length="10"
+          />
+
+          <!-- 多对一属性: 开始时间段 -->
+          <many-to-one name="startDayTimeType"
+            column="startDayTimeType"
+            class="DayTimeType"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单日期型属性: 结束时间 -->
+          <property
+            name="endDate"
+            column="endDate"
+            	type="timestamp"
+            	length="10"
+          />
+
+          <!-- 多对一属性: 结束时间段 -->
+          <many-to-one name="endDayTimeType"
+            column="endDayTimeType"
+            class="DayTimeType"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单浮点型属性: 请假天数 -->
+          <property
+            name="leaveDays"
+            column="leaveDays"
+            type="float"
+          />
+
+          <!-- 多对一属性: 填写人 -->
+          <many-to-one name="writeUserObj"
+            column="writeUserObj"
+            class="UserInfo"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 前往地点 -->
+          <property
+            name="place"
+            column="place"
+            type="string"
+            length="60"
+          />
+
+          <!-- 简单字符串属性: 请假事由 -->
+          <property
+            name="reason"
+            column="reason"
+            type="string"
+            length="500"
+          />
+
+          <!-- 简单字符串属性: 备注 -->
+          <property
+            name="memo"
+            column="memo"
+            type="string"
+            length="200"
+          />
+
+          <!-- 简单整型属性: 状态 -->
+          <property
+            name="state"
+            column="state"
+            type="int"
+
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 
