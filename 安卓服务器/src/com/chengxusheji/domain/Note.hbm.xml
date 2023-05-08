@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="Note" table="Note">
+
+          <!-- 主键节点ID -->
+          <id name="noteId" column="noteId">
+            <generator class="native"/>
+          </id>
+
+          <!-- 简单字符串属性: 节点名称 -->
+          <property
+            name="noteName"
+            column="noteName"
+            type="string"
+            length="20"
+          />
+
+          <!-- 多对一属性: 处理部门 -->
+          <many-to-one name="departmentObj"
+            column="departmentObj"
+            class="Department"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 多对一属性: 需要职级 -->
+          <many-to-one name="positionObj"
+            column="positionObj"
+            class="Position"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单整型属性: 节点编号 -->
+          <property
+            name="noteIndex"
+            column="noteIndex"
+            type="int"
+
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 

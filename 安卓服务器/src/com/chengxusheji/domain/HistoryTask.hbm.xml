@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="HistoryTask" table="HistoryTask">
+
+          <!-- 主键任务历史记录Id -->
+          <id name="historyTaskId" column="historyTaskId">
+            <generator class="native"/>
+          </id>
+
+          <!-- 多对一属性: 请假记录ID -->
+          <many-to-one name="leaveObj"
+            column="leaveObj"
+            class="LeaveInfo"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 多对一属性: 节点 -->
+          <many-to-one name="noteObj"
+            column="noteObj"
+            class="Note"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 审批意见 -->
+          <property
+            name="checkSuggest"
+            column="checkSuggest"
+            type="string"
+            length="200"
+          />
+
+          <!-- 多对一属性: 处理人 -->
+          <many-to-one name="userObj"
+            column="userObj"
+            class="UserInfo"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 创建时间 -->
+          <property
+            name="taskTime"
+            column="taskTime"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单整型属性: 审批状态 -->
+          <property
+            name="checkState"
+            column="checkState"
+            type="int"
+
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 

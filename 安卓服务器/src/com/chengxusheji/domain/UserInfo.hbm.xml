@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="UserInfo" table="UserInfo">
+
+          <!-- 主键用户名 -->
+          <id name="user_name" type="string" length="20">
+            <generator class="assigned"/>
+          </id>
+
+          <!-- 简单字符串属性: 密码 -->
+          <property
+            name="password"
+            column="password"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单字符串属性: 姓名 -->
+          <property
+            name="name"
+            column="name"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单字符串属性: 性别 -->
+          <property
+            name="sex"
+            column="sex"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单日期型属性: 出生日期 -->
+          <property
+            name="birthday"
+            column="birthday"
+            	type="timestamp"
+            	length="10"
+          />
+
+          <!-- 多对一属性: 所在部门 -->
+          <many-to-one name="departmentObj"
+            column="departmentObj"
+            class="Department"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 手机号 -->
+          <property
+            name="mobileNumber"
+            column="mobileNumber"
+            type="string"
+            length="20"
+          />
+
+          <!-- 多对一属性: 职级 -->
+          <many-to-one name="positionName"
+            column="positionName"
+            class="Position"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 

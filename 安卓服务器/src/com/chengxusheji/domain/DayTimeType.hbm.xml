@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="DayTimeType" table="DayTimeType">
+
+          <!-- 主键记录编号 -->
+          <id name="dayTimeTypeId" column="dayTimeTypeId">
+            <generator class="native"/>
+          </id>
+
+          <!-- 简单字符串属性: 时间段名称 -->
+          <property
+            name="dayTimeTypeName"
+            column="dayTimeTypeName"
+            type="string"
+            length="20"
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 
